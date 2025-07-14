@@ -49,7 +49,7 @@ module "blog_sg" {
 }
 
 
-module "autoscaling" {
+module "blog_autoscaling" {
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "9.0.1"
   
@@ -89,7 +89,7 @@ module "blog_alb" {
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
-      target_id        = module.autoscaling.blog.id
+      target_id        = module.blog_autoscaling.id
     }
   }
 
