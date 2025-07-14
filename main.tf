@@ -64,7 +64,7 @@ module "blog_autoscaling" {
   instance_type = var.instance_type
 
   traffic_source_attachments = {
-    ex-alb = {
+    blog_alb = {
       traffic_source_identifier = module.blog_alb.arn
       traffic_source_type       = "elbv2"
     }
@@ -96,6 +96,7 @@ module "blog_alb" {
       name_prefix      = "blog-"
       protocol         = "HTTP"
       port             = 80
+      create_attachment = false
     }
   }
 
