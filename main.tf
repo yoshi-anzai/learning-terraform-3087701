@@ -65,7 +65,7 @@ module "blog_autoscaling" {
 
   traffic_source_attachments = {
     blog_alb = {
-      traffic_source_identifier = module.blog_alb.arn
+      traffic_source_identifier = module.blog_alb.target_groups["blog_asg"].arn
       traffic_source_type       = "elbv2"
     }
   }
@@ -92,7 +92,7 @@ module "blog_alb" {
   }
 
   target_groups = {
-    blog = {
+    blog_asg = {
       name_prefix      = "blog-"
       protocol         = "HTTP"
       port             = 80
