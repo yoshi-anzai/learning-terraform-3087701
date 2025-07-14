@@ -69,7 +69,7 @@ module "alb" {
   
   
   listeners = {
-    ex-http-https-redirect = {
+    http-forward = {
       port     = 80
       protocol = "HTTP"
       forward = {
